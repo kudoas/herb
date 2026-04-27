@@ -9,7 +9,7 @@ NODE_WASM_OUTPUT = $(NODE_BUILD_DIR)libherb.js
 CPP_SOURCES = $(wildcard *.cpp)
 C_SOURCES = $(filter-out ../src/main.c ../src/ruby_parser.c, $(shell find ../src -name '*.c'))
 
-PRISM_PATH = $(shell cd .. && bundle show prism)
+PRISM_PATH = $(shell cd .. && bundle exec ruby -I. -e 'require_relative "lib/herb/bootstrap"; puts Herb::Bootstrap.find_prism_gem_path')
 PRISM_MAIN_SOURCES = $(wildcard $(PRISM_PATH)/src/*.c)
 PRISM_UTIL_SOURCES = $(wildcard $(PRISM_PATH)/src/util/*.c)
 ALL_C_SOURCES = $(C_SOURCES) $(PRISM_MAIN_SOURCES) $(PRISM_UTIL_SOURCES)

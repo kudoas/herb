@@ -1,0 +1,11 @@
+-I/Users/daichi/ghq/github.com/marcoroth/herb/vendor/bundle/ruby/4.0.0/bundler/gems/prism-c0e37816e97e/include
+-I/opt/homebrew/opt/check/include
+-O0
+-Wall
+-Werror
+-Wextra
+-Wno-unused-parameter
+-g
+-pedantic
+-std=c99
+-std=gnu99

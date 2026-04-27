@@ -161,7 +161,7 @@ namespace :prism do
 
     Rake::Task["prism:clean"].execute
 
-    prism_bundle_path = `bundle show prism`.chomp
+    prism_bundle_path = Herb::Bootstrap.find_prism_gem_path.to_s
 
     if prism_bundle_path.empty?
       puts "Make sure to run `bundle install` in the herb project directory first"

@@ -33,7 +33,7 @@ $(shell mkdir -p $(build_dir))
 
 os := $(shell uname -s)
 
-prism_path = $(shell bundle show prism)
+prism_path = $(shell bundle exec ruby -I. -e 'require_relative "lib/herb/bootstrap"; puts Herb::Bootstrap.find_prism_gem_path')
 prism_include = $(prism_path)/include
 prism_build = $(prism_path)/build
 
@@ -128,7 +128,7 @@ templates: bundle_install
 .PHONY: prism
 prism: bundle_install
 	cd $(prism_path) && ruby templates/template.rb && make static && cd -
-	rake prism:vendor
+	bundle exec rake prism:vendor
 
 .PHONY: format
 format:
