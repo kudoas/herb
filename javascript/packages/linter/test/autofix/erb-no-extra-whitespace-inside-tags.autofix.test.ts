@@ -76,6 +76,18 @@ describe("erb-no-extra-whitespace-inside-tags autofix", () => {
     expect(result.fixed).toHaveLength(2)
   })
 
+  test("does not fix single space after commented ERB output", () => {
+    const input = '<%#= render "dialog" %>'
+    const expected = '<%#= render "dialog" %>'
+
+    const linter = new Linter(Herb, [ERBNoExtraWhitespaceRule])
+    const result = linter.autofix(input, undefined, undefined, { includeUnsafe: true })
+
+    expect(result.source).toBe(expected)
+    expect(result.fixed).toHaveLength(0)
+    expect(result.unfixed).toHaveLength(0)
+  })
+
   test("fixes multiple ERB tags with extra spaces", () => {
     const input = dedent`
       <%  if admin  %>
